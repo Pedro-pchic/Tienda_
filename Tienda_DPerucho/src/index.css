@@ -50,3 +50,7 @@ body::before {
 .modal-control {
   @apply rounded-lg border border-emerald-200 p-2 text-emerald-800 transition hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700;
 }
+
+.lightbox-nav {
+  @apply absolute z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white text-emerald-800 shadow-md transition hover:bg-emerald-600 hover:text-white;
+}

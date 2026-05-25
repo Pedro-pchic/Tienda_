@@ -1,26 +1,32 @@
 import { motion } from 'framer-motion'
 import {
-  ArrowRight,
   CheckCircle2,
   CircleDollarSign,
   Clock3,
   FileSearch,
   PackageX,
   Receipt,
-  ScanBarcode,
   ShieldCheck,
 } from 'lucide-react'
 import { useState } from 'react'
+import { ArtifactDashboard } from './components/ArtifactDashboard'
 import { Card } from './components/Card'
 import { DiagramCard } from './components/DiagramCard'
-import { DiagramModal } from './components/DiagramModal'
+import { DiagramLightbox } from './components/DiagramLightbox'
+import { ExecutiveHero } from './components/ExecutiveHero'
 import { MockupCard } from './components/MockupCard'
 import { MockupModal } from './components/MockupModal'
+import { PortalFooter } from './components/PortalFooter'
+import { ProjectScope } from './components/ProjectScope'
 import { RequirementTable } from './components/RequirementTable'
 import { RiskCard } from './components/RiskCard'
+import { Roadmap } from './components/Roadmap'
 import { Section } from './components/Section'
 import { Sidebar } from './components/Sidebar'
-import { StatCard } from './components/StatCard'
+import { SolutionOverview } from './components/SolutionOverview'
+import { StakeholderGrid } from './components/StakeholderGrid'
+import { TechnologyOverview } from './components/TechnologyOverview'
+import { TraceabilityMatrix } from './components/TraceabilityMatrix'
 import { UseCaseCard } from './components/UseCaseCard'
 import { diagramCategories, diagrams, type Diagram, type DiagramCategory } from './data/diagrams'
 import { mockupCategories, mockups, type Mockup, type MockupCategory } from './data/mockups'
@@ -69,40 +75,9 @@ function App() {
       <Sidebar />
       <main className="px-5 pb-16 pt-20 md:ml-72 md:px-10 md:pt-0 xl:px-16">
         <div className="mx-auto max-w-6xl">
-          <section id="inicio" className="scroll-mt-24 py-14 lg:py-20">
-            <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-700">
-                <ScanBarcode size={16} />
-                Proyecto documental de ingeniería
-              </div>
-              <div className="grid gap-10 xl:grid-cols-[1fr_360px] xl:items-end">
-                <div>
-                  <p className="mb-4 font-medium text-emerald-700">Análisis y Diseño de Sistemas</p>
-                  <h1 className="text-4xl font-semibold leading-tight tracking-tight text-emerald-950 sm:text-5xl lg:text-6xl">
-                    Tienda de la Esquina <span className="text-emerald-600">Don Perucho</span>
-                  </h1>
-                  <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-                    Portal de presentación técnica que documenta el entendimiento del negocio, la solución propuesta y el diseño candidato para digitalizar la operación minorista.
-                  </p>
-                  <a href="#problema" className="mt-9 inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-medium text-white shadow-lg shadow-emerald-900/10 transition hover:bg-emerald-700">
-                    Explorar análisis <ArrowRight size={18} />
-                  </a>
-                </div>
-                <Card className="border-emerald-200 bg-gradient-to-br from-white to-emerald-50">
-                  <p className="text-sm font-medium text-emerald-700">Solución propuesta</p>
-                  <p className="mt-4 leading-7 text-slate-700">
-                    Diseñar un sistema de gestión que centralice ventas, inventario, precios y reportes, reduciendo errores y respaldando decisiones del propietario.
-                  </p>
-                </Card>
-              </div>
-              <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                <StatCard value="25" label="Requerimientos funcionales" />
-                <StatCard value="7" label="Requerimientos no funcionales" />
-                <StatCard value="15" label="Casos de uso" />
-                <StatCard value="6" label="Procesos clave" />
-              </div>
-            </motion.div>
-          </section>
+          <ExecutiveHero />
+          <Roadmap />
+          <ArtifactDashboard />
 
           <Section id="problema" eyebrow="Diagnóstico" title="Problema del negocio" description="La operación manual limita la velocidad de atención y la trazabilidad necesaria para administrar una tienda de proximidad.">
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -137,6 +112,9 @@ function App() {
               </Card>
             </div>
           </Section>
+
+          <SolutionOverview />
+          <ProjectScope />
 
           <Section id="core" eyebrow="Valor" title="Core del negocio">
             <Card className="relative overflow-hidden border-emerald-200 p-8 md:p-10">
@@ -200,6 +178,10 @@ function App() {
             <RequirementTable requirements={requirements} />
           </Section>
 
+          <Section id="trazabilidad" eyebrow="Cobertura" title="Matriz de trazabilidad" description="Relación inicial entre necesidades funcionales, comportamiento documentado, diagramas disponibles y pantallas candidatas.">
+            <TraceabilityMatrix />
+          </Section>
+
           <Section id="casos" eyebrow="Interacción" title="Casos de uso" description="Casos principales que traducen la operación de la tienda en comportamiento esperado del sistema.">
             <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
               {useCases.map((useCase) => <UseCaseCard key={useCase.code} useCase={useCase} />)}
@@ -217,6 +199,9 @@ function App() {
               ))}
             </div>
           </Section>
+
+          <TechnologyOverview />
+          <StakeholderGrid />
 
           <Section id="riesgos" eyebrow="Control" title="Matriz de riesgos" description="Aspectos que deben atenderse durante validación, modelado y posterior construcción del sistema.">
             <div className="grid gap-4 lg:grid-cols-2">
@@ -256,9 +241,10 @@ function App() {
               <p className="mt-8 text-sm font-medium text-emerald-700">Tienda de la Esquina Don Perucho · Análisis y Diseño de Sistemas</p>
             </Card>
           </Section>
+          <PortalFooter />
         </div>
       </main>
-      <DiagramModal diagram={selectedDiagram} onClose={() => setSelectedDiagram(null)} />
+      <DiagramLightbox diagrams={diagrams} selected={selectedDiagram} onSelect={setSelectedDiagram} onClose={() => setSelectedDiagram(null)} />
       <MockupModal mockup={selectedMockup} onClose={() => setSelectedMockup(null)} />
     </div>
   )

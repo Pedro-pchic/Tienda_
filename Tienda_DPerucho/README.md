@@ -1,6 +1,6 @@
 # Tienda de la Esquina Don Perucho
 
-Portal web documental para presentar el analisis y diseno de una solucion de gestion minorista. Incluye problema, objetivos, procesos, diagramas, requerimientos, casos de uso, arquitectura, riesgos, mockups y conclusion.
+Portal web documental para presentar el analisis y diseno de una solucion de gestion minorista. Incluye hero ejecutivo, roadmap, alcance, trazabilidad, diagramas, requerimientos filtrables, casos de uso, arquitectura, riesgos, mockups y conclusion.
 
 ## Tecnologias
 
@@ -25,7 +25,7 @@ npm run build
 
 ## Diagramas UML
 
-Los SVG o PNG exportados desde draw.io se organizan en `public/diagrams/`. La categoria Casos de Uso ya presenta los ocho archivos de `public/diagrams/CU/` en cards filtrables y un modal fullscreen con zoom. Los nuevos artefactos se registran en `src/data/diagrams.ts`.
+Los SVG o PNG exportados desde draw.io se organizan en `public/diagrams/`. La categoria Casos de Uso presenta los ocho archivos de `public/diagrams/CU/` en cards filtrables y un lightbox fullscreen con navegacion por teclado. Los nuevos artefactos se registran en `src/data/diagrams.ts`.
 
 ## GitHub Pages
 

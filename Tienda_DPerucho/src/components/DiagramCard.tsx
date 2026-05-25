@@ -35,6 +35,9 @@ export function DiagramCard({ diagram, onOpen }: DiagramCardProps) {
         </span>
       </button>
       <div className="p-5">
+        <span className="mb-4 inline-flex rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-emerald-700">
+          UML · {diagram.category}
+        </span>
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="font-mono text-xs font-semibold text-emerald-700">{diagram.id}</p>
