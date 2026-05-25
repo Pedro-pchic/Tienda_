@@ -67,6 +67,13 @@ export const diagrams: Diagram[] = [
     image: 'diagrams/CU/CU-08_actualizar_precios.png',
     description: 'Cambio de precio vigente para mantener ventas precisas.',
   },
+  {
+    id: 'ER-01',
+    title: 'Entidad-Relación',
+    category: 'ER',
+    image: 'diagrams/E-R/Entidad Relacion.png',
+    description: 'Modelo de datos conceptual que relaciona productos, ventas, inventario y actores del negocio.',
+  },
 ]
 
 export function diagramImageUrl(image: string) {
