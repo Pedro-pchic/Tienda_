@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  color: #475569;
+  background: #f7faf5;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f7faf5;
+}
+
+body::before {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(circle at 70% 5%, rgb(34 197 94 / 0.12), transparent 30rem),
+    radial-gradient(circle at 30% 60%, rgb(22 101 52 / 0.05), transparent 35rem);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+::selection {
+  color: #ffffff;
+  background: rgb(22 163 74 / 0.72);
+}
+
+.modal-control {
+  @apply rounded-lg border border-emerald-200 p-2 text-emerald-800 transition hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700;
+}
