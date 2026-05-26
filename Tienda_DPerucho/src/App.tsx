@@ -33,6 +33,7 @@ import { TechnologyOverview } from './components/TechnologyOverview'
 import { TechnicalArchitecture } from './components/TechnicalArchitecture'
 import { TraceabilityMatrix } from './components/TraceabilityMatrix'
 import { UseCaseDocumentation } from './components/UseCaseDocumentation'
+import { UseCaseScenarios } from './components/UseCaseScenarios'
 import { diagramCategories, diagrams, type Diagram, type DiagramCategory } from './data/diagrams'
 import { mockupCategories, mockups, type Mockup, type MockupCategory } from './data/mockups'
 import { requirements } from './data/requirements'
@@ -181,6 +182,8 @@ function App() {
           <Section id="casos" eyebrow="Interacción" title="Casos de uso" description="Catálogo de 18 interacciones documentadas, escenarios expandidos y trazabilidad de requerimientos conforme al análisis del sistema.">
             <UseCaseDocumentation onOpenDiagram={openUseCaseDiagram} />
           </Section>
+
+          <UseCaseScenarios />
 
           <Section id="arquitectura" eyebrow="Diseño candidato" title="Arquitectura por capas" description="La separación de responsabilidades reduce acoplamiento y permite evolucionar cada parte de una futura implementación.">
             <div className="space-y-3">

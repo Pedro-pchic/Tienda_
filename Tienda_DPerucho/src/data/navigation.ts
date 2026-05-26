@@ -62,6 +62,7 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'requerimientos', label: 'Requerimientos', icon: FileText, badge: '32' },
       { id: 'trazabilidad', label: 'Trazabilidad', icon: GitBranch },
       { id: 'casos', label: 'Casos de uso', icon: ClipboardCheck },
+      { id: 'escenarios', label: 'Escenarios', icon: FileText, badge: '15' },
       { id: 'arquitectura', label: 'Arquitectura', icon: Layers3 },
       { id: 'arquitectura-tecnica', label: 'Arquitectura técnica', icon: Network },
       { id: 'tecnologias', label: 'Tecnologías', icon: Wrench },
