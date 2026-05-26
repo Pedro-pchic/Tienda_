@@ -7,8 +7,9 @@ const metrics = [
   { value: '25', label: 'RF' },
   { value: '7', label: 'RNF' },
   { value: '15', label: 'Casos de Uso' },
+  { value: '18', label: 'Diagramas CU' },
   { value: '6', label: 'Procesos' },
-  { value: '4', label: 'Capas Arquitectónicas' },
+  { value: '4', label: 'Capas' },
 ]
 
 export function ExecutiveHero() {
@@ -60,11 +61,11 @@ export function ExecutiveHero() {
               </div>
             </div>
           </div>
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {metrics.map((metric, index) => (
               <motion.div
                 key={metric.label}
-                className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-4"
+                className="rounded-2xl border border-emerald-100 bg-white/65 p-4 shadow-sm shadow-emerald-900/5 backdrop-blur"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.18 + index * 0.06 }}

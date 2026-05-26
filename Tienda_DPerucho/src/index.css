@@ -54,3 +54,17 @@ body::before {
 .lightbox-nav {
   @apply absolute z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white text-emerald-800 shadow-md transition hover:bg-emerald-600 hover:text-white;
 }
+
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(52 211 153 / 0.18) transparent;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgb(52 211 153 / 0.18);
+}

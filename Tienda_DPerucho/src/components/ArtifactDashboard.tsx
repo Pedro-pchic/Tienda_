@@ -5,12 +5,12 @@ import { Section } from './Section'
 const artifacts: Array<{ value: string; label: string; icon: LucideIcon }> = [
   { value: '25', label: 'Requerimientos funcionales', icon: FileText },
   { value: '7', label: 'Requerimientos no funcionales', icon: Settings2 },
-  { value: '15', label: 'Casos de uso', icon: ClipboardCheck },
-  { value: '8', label: 'Diagramas cargados', icon: Boxes },
+  { value: '18', label: 'Casos de uso', icon: ClipboardCheck },
+  { value: '18', label: 'Diagramas CU cargados', icon: Boxes },
   { value: '6', label: 'Procesos del negocio', icon: Route },
   { value: '4', label: 'Capas arquitectónicas', icon: Layers3 },
-  { value: '6', label: 'Riesgos identificados', icon: ShieldAlert },
-  { value: '6', label: 'Mockups propuestos', icon: Monitor },
+  { value: '15', label: 'Reglas de negocio', icon: ShieldAlert },
+  { value: '12', label: 'Mockups POS', icon: Monitor },
 ]
 
 export function ArtifactDashboard() {

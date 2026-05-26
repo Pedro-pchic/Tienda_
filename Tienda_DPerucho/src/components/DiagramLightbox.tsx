@@ -27,6 +27,7 @@ export function DiagramLightbox({ diagrams, selected, onSelect, onClose }: Diagr
   useEffect(() => {
     if (!selected) return
 
+    const previousOverflow = document.body.style.overflow
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
       if (event.key === 'ArrowLeft') showPrevious()
@@ -36,7 +37,7 @@ export function DiagramLightbox({ diagrams, selected, onSelect, onClose }: Diagr
     document.body.style.overflow = 'hidden'
     return () => {
       document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = ''
+      document.body.style.overflow = previousOverflow
     }
   })
 
@@ -79,13 +80,18 @@ export function DiagramLightbox({ diagrams, selected, onSelect, onClose }: Diagr
               </button>
             </div>
             <aside className="relative overflow-y-auto border-t border-emerald-100 p-6 lg:border-l lg:border-t-0">
-              <div className="mb-10 flex justify-end gap-2">
+              <div className="mb-10 flex items-center justify-between gap-2">
+                <span className="rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700">
+                  {selectedIndex + 1} / {diagrams.length}
+                </span>
+                <div className="flex gap-2">
                 <button type="button" onClick={openFullscreen} aria-label="Abrir pantalla completa" className="modal-control">
                   <Maximize size={18} />
                 </button>
                 <button type="button" onClick={onClose} aria-label="Cerrar lightbox" className="modal-control">
                   <X size={20} />
                 </button>
+                </div>
               </div>
               <span className="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700">UML · {selected.category}</span>
               <p className="mt-7 font-mono text-sm font-semibold text-emerald-700">{selected.id}</p>

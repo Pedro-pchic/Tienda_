@@ -10,30 +10,32 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 import { ArtifactDashboard } from './components/ArtifactDashboard'
+import { ActivityProcessGallery } from './components/ActivityProcessGallery'
+import { BusinessRulesTable } from './components/BusinessRulesTable'
 import { Card } from './components/Card'
+import { CoreValueChain } from './components/CoreValueChain'
 import { DiagramCard } from './components/DiagramCard'
 import { DiagramLightbox } from './components/DiagramLightbox'
 import { ExecutiveHero } from './components/ExecutiveHero'
+import { EntityRelationshipModel } from './components/EntityRelationshipModel'
 import { MockupCard } from './components/MockupCard'
 import { MockupModal } from './components/MockupModal'
 import { PortalFooter } from './components/PortalFooter'
 import { ProjectScope } from './components/ProjectScope'
 import { RequirementTable } from './components/RequirementTable'
-import { RiskCard } from './components/RiskCard'
+import { RiskDashboard } from './components/RiskDashboard'
 import { Roadmap } from './components/Roadmap'
 import { Section } from './components/Section'
 import { Sidebar } from './components/Sidebar'
 import { SolutionOverview } from './components/SolutionOverview'
 import { StakeholderGrid } from './components/StakeholderGrid'
 import { TechnologyOverview } from './components/TechnologyOverview'
+import { TechnicalArchitecture } from './components/TechnicalArchitecture'
 import { TraceabilityMatrix } from './components/TraceabilityMatrix'
-import { UseCaseCard } from './components/UseCaseCard'
+import { UseCaseDocumentation } from './components/UseCaseDocumentation'
 import { diagramCategories, diagrams, type Diagram, type DiagramCategory } from './data/diagrams'
 import { mockupCategories, mockups, type Mockup, type MockupCategory } from './data/mockups'
-import { processes } from './data/processes'
 import { requirements } from './data/requirements'
-import { risks } from './data/risks'
-import { useCases } from './data/useCases'
 
 const problems = [
   { title: 'Ventas manuales', text: 'La anotación informal dificulta auditar operaciones.', icon: Receipt },
@@ -69,11 +71,15 @@ function App() {
   const filteredMockups = activeMockupCategory === 'Todos'
     ? mockups
     : mockups.filter((mockup) => mockup.category === activeMockupCategory)
+  const openUseCaseDiagram = (code: string) => {
+    const diagram = diagrams.find((item) => item.id === code)
+    if (diagram) setSelectedDiagram(diagram)
+  }
 
   return (
     <div className="min-h-screen bg-[#f7faf5] text-slate-700">
       <Sidebar />
-      <main className="px-5 pb-16 pt-20 md:ml-72 md:px-10 md:pt-0 xl:px-16">
+      <main className="px-5 pb-16 pt-20 md:ml-80 md:px-10 md:pt-0 xl:px-16">
         <div className="mx-auto max-w-6xl">
           <ExecutiveHero />
           <Roadmap />
@@ -116,28 +122,10 @@ function App() {
           <SolutionOverview />
           <ProjectScope />
 
-          <Section id="core" eyebrow="Valor" title="Core del negocio">
-            <Card className="relative overflow-hidden border-emerald-200 p-8 md:p-10">
-              <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-emerald-300/25 blur-3xl" />
-              <p className="relative text-2xl font-semibold text-emerald-950 md:text-3xl">
-                “Intermediación minorista y suministro de proximidad”
-              </p>
-              <p className="relative mt-6 max-w-3xl leading-8 text-slate-600">
-                Don Perucho genera valor al ofrecer productos cotidianos cerca del cliente, con rapidez, disponibilidad inmediata y venta al detalle. El diseño prioriza conservar esa agilidad mientras incorpora control y datos confiables.
-              </p>
-            </Card>
-          </Section>
+          <CoreValueChain />
 
-          <Section id="procesos" eyebrow="Operación" title="Procesos del negocio" description="Seis flujos concentran la actividad que debe comprender y respaldar una futura solución.">
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {processes.map(({ title, description, icon: Icon }) => (
-                <Card key={title} className="p-5">
-                  <Icon size={22} className="mb-5 text-emerald-600" />
-                  <h3 className="mb-2 font-medium text-emerald-950">{title}</h3>
-                  <p className="text-sm leading-6 text-slate-600">{description}</p>
-                </Card>
-              ))}
-            </div>
+          <Section id="procesos" eyebrow="Operación" title="Procesos / Diagramas de Actividad" description="Seis flujos documentan actores, reglas y requerimientos mediante previews operativos tipo UML/BPMN.">
+            <ActivityProcessGallery />
           </Section>
 
           <Section id="diagramas" eyebrow="Modelado UML" title="Galería de diagramas" description="Explore los artefactos UML exportados desde draw.io y amplíelos para la exposición técnica.">
@@ -174,6 +162,14 @@ function App() {
             )}
           </Section>
 
+          <Section id="modelo-er" eyebrow="Modelo de información" title="Modelo Entidad Relación interactivo" description="Entidades candidatas, claves y cardinalidades que soportan ventas, inventario, compras y control diario.">
+            <EntityRelationshipModel />
+          </Section>
+
+          <Section id="reglas" eyebrow="Control empresarial" title="Reglas de negocio" description="Restricciones operativas, riesgos y validaciones necesarias para preservar el funcionamiento confiable de la tienda.">
+            <BusinessRulesTable />
+          </Section>
+
           <Section id="requerimientos" eyebrow="Alcance" title="Requerimientos" description="Muestra inicial preparada para ampliarse hasta el inventario completo de 25 RF y 7 RNF desde la fuente de datos.">
             <RequirementTable requirements={requirements} />
           </Section>
@@ -182,10 +178,8 @@ function App() {
             <TraceabilityMatrix />
           </Section>
 
-          <Section id="casos" eyebrow="Interacción" title="Casos de uso" description="Casos principales que traducen la operación de la tienda en comportamiento esperado del sistema.">
-            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
-              {useCases.map((useCase) => <UseCaseCard key={useCase.code} useCase={useCase} />)}
-            </div>
+          <Section id="casos" eyebrow="Interacción" title="Casos de uso" description="Catálogo de 18 interacciones documentadas, escenarios expandidos y trazabilidad de requerimientos conforme al análisis del sistema.">
+            <UseCaseDocumentation onOpenDiagram={openUseCaseDiagram} />
           </Section>
 
           <Section id="arquitectura" eyebrow="Diseño candidato" title="Arquitectura por capas" description="La separación de responsabilidades reduce acoplamiento y permite evolucionar cada parte de una futura implementación.">
@@ -200,13 +194,12 @@ function App() {
             </div>
           </Section>
 
+          <TechnicalArchitecture />
           <TechnologyOverview />
           <StakeholderGrid />
 
           <Section id="riesgos" eyebrow="Control" title="Matriz de riesgos" description="Aspectos que deben atenderse durante validación, modelado y posterior construcción del sistema.">
-            <div className="grid gap-4 lg:grid-cols-2">
-              {risks.map((risk) => <RiskCard key={risk.risk} risk={risk} />)}
-            </div>
+            <RiskDashboard />
           </Section>
 
           <Section id="mockups" eyebrow="UX/UI" title="Mockups propuestos" description="Galería de pantallas candidatas para documentar y validar la experiencia antes de iniciar el desarrollo funcional.">

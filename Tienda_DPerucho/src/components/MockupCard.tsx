@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Expand, ImageOff, UserRound } from 'lucide-react'
+import { Expand, ImageOff, Target, UserRound } from 'lucide-react'
 import { useState } from 'react'
 import type { Mockup } from '../data/mockups'
 import { mockupImageUrl } from '../data/mockups'
@@ -54,14 +54,21 @@ export function MockupCard({ mockup, onOpen }: MockupCardProps) {
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">{mockup.category}</p>
         <h3 className="mt-2 text-lg font-semibold text-emerald-950">{mockup.title}</h3>
         <p className="mt-3 min-h-12 text-sm leading-6 text-slate-600">{mockup.description}</p>
-        <div className="mt-5 flex items-center gap-2 border-t border-emerald-100 pt-4 text-sm text-slate-600">
-          <UserRound size={16} className="text-emerald-600" />
-          {mockup.actor}
+        <p className="mt-3 rounded-lg bg-emerald-50 px-3 py-2 font-mono text-[11px] text-emerald-700">{mockup.related}</p>
+        <div className="mt-5 space-y-3 border-t border-emerald-100 pt-4 text-sm text-slate-600">
+          <div className="flex items-center gap-2">
+            <UserRound size={16} className="shrink-0 text-emerald-600" />
+            <span>{mockup.actor}</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <Target size={16} className="mt-0.5 shrink-0 text-emerald-600" />
+            <span className="line-clamp-2 leading-5">{mockup.objective}</span>
+          </div>
         </div>
         <button
           type="button"
           onClick={() => onOpen(mockup)}
-          className="mt-5 w-full rounded-xl border border-emerald-200 px-4 py-2.5 text-sm font-medium text-emerald-800 transition hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700"
+          className="mt-5 w-full rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-900/15 transition hover:bg-cyan-700 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
         >
           Ver pantalla
         </button>

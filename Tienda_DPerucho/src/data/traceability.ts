@@ -14,4 +14,6 @@ export const traceability: TraceabilityItem[] = [
   { requirement: 'RF-03 Actualizar inventario', useCase: 'CU-04 Consultar inventario', diagram: 'CU-04_consultar_inventario.png', mockup: 'Inventario', status: 'Trazado' },
   { requirement: 'RF-04 Generar reportes', useCase: 'CU-XX Generar reportes', diagram: 'Pendiente', mockup: 'Reportes', status: 'Parcial' },
   { requirement: 'RF-05 Gestionar productos', useCase: 'CU-05 Registrar producto', diagram: 'CU-05_registrar_producto.png', mockup: 'Gestión de productos', status: 'Trazado' },
+  { requirement: 'RF-06 Registrar proveedores', useCase: 'CU-XX Registrar proveedor', diagram: 'Pendiente', mockup: 'Pendiente', status: 'Parcial' },
+  { requirement: 'RNF-01 Usabilidad', useCase: 'CU-01 Iniciar sesión', diagram: 'CU-01_iniciar_sesion.png', mockup: 'Login', status: 'Trazado' },
 ]

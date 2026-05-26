@@ -14,8 +14,8 @@ export function RiskCard({ risk }: RiskCardProps) {
         <div>
           <div className="flex flex-wrap items-center gap-3">
             <h3 className="font-medium text-emerald-950">{risk.risk}</h3>
-            <span className={`rounded-full px-2.5 py-1 text-xs ${risk.impact === 'Alto' ? 'bg-rose-100 text-rose-700' : 'bg-amber-100 text-amber-700'}`}>
-              {risk.impact}
+            <span className={`rounded-full px-2.5 py-1 text-xs ${risk.level === 'Crítico' || risk.level === 'Alto' ? 'bg-rose-100 text-rose-700' : 'bg-amber-100 text-amber-700'}`}>
+              {risk.level}
             </span>
           </div>
           <p className="mt-3 text-sm leading-6 text-slate-600">{risk.mitigation}</p>

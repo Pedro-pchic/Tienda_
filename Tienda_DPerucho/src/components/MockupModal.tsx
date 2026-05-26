@@ -13,6 +13,7 @@ export function MockupModal({ mockup, onClose }: MockupModalProps) {
   useEffect(() => {
     if (!mockup) return
 
+    const previousOverflow = document.body.style.overflow
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
     }
@@ -21,7 +22,7 @@ export function MockupModal({ mockup, onClose }: MockupModalProps) {
 
     return () => {
       document.removeEventListener('keydown', closeOnEscape)
-      document.body.style.overflow = ''
+      document.body.style.overflow = previousOverflow
     }
   }, [mockup, onClose])
 
@@ -90,6 +91,7 @@ function MockupContent({ mockup, onClose }: { mockup: Mockup; onClose: () => voi
           <Metadata icon={UserRound} label="Actor principal" value={mockup.actor} />
           <Metadata icon={Target} label="Objetivo" value={mockup.objective} />
           <Metadata icon={Layers3} label="Categoría" value={mockup.category} />
+          <Metadata icon={Layers3} label="Trazabilidad RF / CU" value={mockup.related} />
         </div>
       </aside>
     </motion.div>
