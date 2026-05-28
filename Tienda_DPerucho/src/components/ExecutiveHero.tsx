@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, BadgeCheck, ChevronRight, Layers3 } from 'lucide-react'
 import { architecturePath } from '../data/enterprise'
+import { requirements } from '../data/requirements'
 
 const badges = ['Proyecto académico', 'Análisis de Sistemas', 'Diseño conceptual', 'UML']
+const functionalCount = requirements.filter((requirement) => requirement.type === 'Funcional').length
+const nonFunctionalCount = requirements.filter((requirement) => requirement.type === 'No funcional').length
 const metrics = [
-  { value: '25', label: 'RF' },
-  { value: '7', label: 'RNF' },
+  { value: String(functionalCount), label: 'RF' },
+  { value: String(nonFunctionalCount), label: 'RNF' },
   { value: '15', label: 'Casos de Uso' },
   { value: '18', label: 'Diagramas CU' },
   { value: '6', label: 'Procesos' },

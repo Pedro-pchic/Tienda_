@@ -13,7 +13,15 @@ export function RequirementTable({ requirements }: RequirementTableProps) {
   const filteredRequirements = useMemo(() => {
     const term = query.toLocaleLowerCase()
     return requirements.filter((requirement) => {
-      const matchesQuery = [requirement.code, requirement.requirement, requirement.area]
+      const matchesQuery = [
+        requirement.code,
+        requirement.title,
+        requirement.requirement,
+        requirement.area,
+        requirement.description,
+        requirement.relatedUseCase,
+        requirement.relatedStory,
+      ]
         .some((value) => value.toLocaleLowerCase().includes(term))
       const matchesType = type === 'Todos' || requirement.type === type
       const matchesPriority = priority === 'Todos' || requirement.priority === priority
@@ -46,7 +54,14 @@ export function RequirementTable({ requirements }: RequirementTableProps) {
               {filteredRequirements.map((requirement) => (
                 <tr key={requirement.code} className="transition hover:bg-emerald-50">
                   <td className="px-5 py-4 font-mono font-medium text-emerald-700">{requirement.code}</td>
-                  <td className="px-5 py-4 text-emerald-950">{requirement.requirement}</td>
+                  <td className="min-w-72 px-5 py-4">
+                    <p className="font-medium text-emerald-950">{requirement.title}</p>
+                    <p className="mt-1 text-xs leading-5 text-slate-500">{requirement.description}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <span className="rounded bg-emerald-50 px-2 py-1 font-mono text-[11px] text-emerald-700">{requirement.relatedUseCase}</span>
+                      <span className="rounded bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-600">{requirement.relatedStory}</span>
+                    </div>
+                  </td>
                   <td className="px-5 py-4 text-slate-700">{requirement.type}</td>
                   <td className="px-5 py-4">
                     <span className={`rounded-full px-3 py-1 text-xs font-medium ${

@@ -43,7 +43,7 @@ export function TraceabilityMatrix() {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Buscar requisito, CU o mockup"
+              placeholder="Buscar requisito, historia, CU o mockup"
               className="w-full rounded-xl border border-emerald-100 bg-white py-2.5 pl-9 pr-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200"
             />
           </label>
@@ -70,7 +70,7 @@ export function TraceabilityMatrix() {
         <table className="min-w-full text-left text-sm">
           <thead className="bg-emerald-950 text-xs uppercase tracking-wider text-emerald-100">
             <tr>
-              {['Requerimiento', 'Caso de uso', 'Diagrama relacionado', 'Mockup relacionado', 'Estado'].map((header) => (
+              {['Requerimiento', 'Historia', 'Caso de uso', 'Diagrama relacionado', 'Mockup relacionado', 'Estado'].map((header) => (
                 <th key={header} className="px-5 py-4 font-medium">{header}</th>
               ))}
             </tr>
@@ -79,6 +79,7 @@ export function TraceabilityMatrix() {
             {filteredItems.map((item) => (
               <tr key={item.requirement} className="transition hover:bg-emerald-50/70">
                 <td className="whitespace-nowrap px-5 py-4 font-medium text-emerald-950">{item.requirement}</td>
+                <td className="whitespace-nowrap px-5 py-4 font-mono text-xs font-medium text-emerald-700">{item.story}</td>
                 <td className="whitespace-nowrap px-5 py-4 text-slate-700">{item.useCase}</td>
                 <td className="whitespace-nowrap px-5 py-4 font-mono text-xs text-emerald-700">{item.diagram}</td>
                 <td className="whitespace-nowrap px-5 py-4 text-slate-600">{item.mockup}</td>
@@ -89,7 +90,7 @@ export function TraceabilityMatrix() {
             ))}
             {filteredItems.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-5 py-10 text-center text-sm text-slate-500">
+                <td colSpan={6} className="px-5 py-10 text-center text-sm text-slate-500">
                   No se encontraron relaciones para los filtros seleccionados.
                 </td>
               </tr>

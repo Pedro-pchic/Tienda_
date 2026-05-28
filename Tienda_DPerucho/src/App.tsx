@@ -34,6 +34,7 @@ import { TechnicalArchitecture } from './components/TechnicalArchitecture'
 import { TraceabilityMatrix } from './components/TraceabilityMatrix'
 import { UseCaseDocumentation } from './components/UseCaseDocumentation'
 import { UseCaseScenarios } from './components/UseCaseScenarios'
+import { UserStoriesSection } from './components/UserStoriesSection'
 import { diagramCategories, diagrams, type Diagram, type DiagramCategory } from './data/diagrams'
 import { mockupCategories, mockups, type Mockup, type MockupCategory } from './data/mockups'
 import { requirements } from './data/requirements'
@@ -171,8 +172,12 @@ function App() {
             <BusinessRulesTable />
           </Section>
 
-          <Section id="requerimientos" eyebrow="Alcance" title="Requerimientos" description="Muestra inicial preparada para ampliarse hasta el inventario completo de 25 RF y 7 RNF desde la fuente de datos.">
+          <Section id="requerimientos" eyebrow="Alcance" title="Requerimientos" description="Inventario completo de 25 requerimientos funcionales y 7 no funcionales, trazados a casos de uso e historias de usuario.">
             <RequirementTable requirements={requirements} />
+          </Section>
+
+          <Section id="historias" eyebrow="Agile" title="Historias de usuario" description="Historias priorizadas con formato Como rol, quiero necesidad, para beneficio, enlazadas a requerimientos, casos de uso y mockups.">
+            <UserStoriesSection />
           </Section>
 
           <Section id="trazabilidad" eyebrow="Cobertura" title="Matriz de trazabilidad" description="Relación inicial entre necesidades funcionales, comportamiento documentado, diagramas disponibles y pantallas candidatas.">

@@ -1,6 +1,7 @@
 import {
   AlertTriangle,
   BarChart3,
+  BookOpenText,
   CheckCircle,
   ClipboardCheck,
   ClipboardList,
@@ -60,6 +61,7 @@ export const navigationGroups: NavigationGroup[] = [
       { id: 'diagramas', label: 'Diagramas', icon: Network, badge: '18' },
       { id: 'modelo-er', label: 'Modelo ER', icon: Layers3, badge: '12' },
       { id: 'requerimientos', label: 'Requerimientos', icon: FileText, badge: '32' },
+      { id: 'historias', label: 'Historias de usuario', icon: BookOpenText, badge: '10' },
       { id: 'trazabilidad', label: 'Trazabilidad', icon: GitBranch },
       { id: 'casos', label: 'Casos de uso', icon: ClipboardCheck },
       { id: 'escenarios', label: 'Escenarios', icon: FileText, badge: '15' },

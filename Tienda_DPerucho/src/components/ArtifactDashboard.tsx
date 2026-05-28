@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion'
 import { Boxes, FileText, Layers3, Monitor, Route, ShieldAlert, ClipboardCheck, Settings2, type LucideIcon } from 'lucide-react'
+import { requirements } from '../data/requirements'
 import { Section } from './Section'
 
+const functionalCount = requirements.filter((requirement) => requirement.type === 'Funcional').length
+const nonFunctionalCount = requirements.filter((requirement) => requirement.type === 'No funcional').length
+
 const artifacts: Array<{ value: string; label: string; icon: LucideIcon }> = [
-  { value: '25', label: 'Requerimientos funcionales', icon: FileText },
-  { value: '7', label: 'Requerimientos no funcionales', icon: Settings2 },
+  { value: String(functionalCount), label: 'Requerimientos funcionales', icon: FileText },
+  { value: String(nonFunctionalCount), label: 'Requerimientos no funcionales', icon: Settings2 },
   { value: '18', label: 'Casos de uso', icon: ClipboardCheck },
   { value: '18', label: 'Diagramas CU cargados', icon: Boxes },
   { value: '6', label: 'Procesos del negocio', icon: Route },
